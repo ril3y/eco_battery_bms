@@ -21,6 +21,22 @@ class EcoBatteryDriver extends BatteryDriver {
   @override
   final BleSignature signature = BleSignature(services: [kServiceUuid], namePattern: kEcoNamePattern);
 
+  /// ECO packs report cells, temps, SOH and cycles, keep a time-stamped
+  /// on-board log, have a settable clock, and accept setting writes. Their
+  /// protection history lives in the log, not in lifetime counters.
+  @override
+  BatteryCapabilities get capabilities => const BatteryCapabilities(
+        cells: true,
+        cellBalancing: true,
+        temperatures: true,
+        stateOfHealth: true,
+        cycleCount: true,
+        protectionTotals: false,
+        onBoardLog: true,
+        clock: true,
+        settings: true,
+      );
+
   /// The advertised name is the pack serial.
   @override
   BatteryIdentity describe(BleDevice device) => BatteryIdentity(serial: device.name);
