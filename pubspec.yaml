@@ -1,0 +1,24 @@
+name: eco_battery_bms
+description: ECO Battery (EB / LZH) BMS driver - live data, on-board alarm and running logs, BMS clock - for bms_core.
+version: 0.1.0
+publish_to: none
+repository: https://github.com/ril3y/eco_battery_bms
+topics: [bluetooth, ble, bms, battery, modbus]
+
+environment:
+  sdk: ^3.13.5
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  bms_core:
+    git:
+      url: https://github.com/ril3y/bms_core.git
+      ref: main
+  universal_ble: ^3.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
